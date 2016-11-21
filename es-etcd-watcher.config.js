@@ -12,6 +12,23 @@ function turnToKey(root) {
   return root
 }
 
+const commands = [
+  ({ root, changed, api }) => {
+    const tree = turnToKey(root)
+
+    return api.template({
+      src: './templates/app.conf',
+      // dest: '/etc/nginx/sites-enabled/app.conf',
+      dest: './test',
+      data: {
+        tree,
+        domain: 'foo.com',
+      },
+    })
+  },
+  'nginx -s reload'
+]
+
 module.exports = {
   etcd: {
     host: '159.203.238.31',
@@ -19,31 +36,11 @@ module.exports = {
   keys: [
     {
       key: '/registry/services/',
-      commands: [
-        ({ root, changed, api }) => {
-          const tree = turnToKey(root)
-
-          return api.template({
-            src: './templates/app.conf',
-            // dest: '/etc/nginx/sites-enabled/app.conf',
-            dest: './test',
-            data: {
-              tree,
-              domain: 'foo.com',
-            },
-          })
-        },
-      ],
+      commands,
     },
-    // {
-    //   key: '/registry/minions/',
-    //   commands: [
-    //     async({ data, api }) => api.template({
-    //       src: './templates/app.conf',
-    //       dest: '/etc/nginx/sites-enabled/app.conf',
-    //       data,
-    //     }),
-    //   ],
-    // },
+    {
+      key: '/registry/minions/',
+      commands,
+    },
   ],
 }

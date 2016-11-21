@@ -2,3 +2,273 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+upstream esayemm-styleguide {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:31256;
+  
+  server /registry/minions/192.241.194.169:31256;
+  
+  server /registry/minions/159.203.229.250:31256;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name esayemm-styleguide.foo.com;
+  
+
+  location / {
+    proxy_pass http://esayemm-styleguide;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+upstream mixerjs {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:30398;
+  
+  server /registry/minions/192.241.194.169:30398;
+  
+  server /registry/minions/159.203.229.250:30398;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name mixerjs.foo.com;
+  
+
+  location / {
+    proxy_pass http://mixerjs;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+upstream sametree {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:30579;
+  
+  server /registry/minions/192.241.194.169:30579;
+  
+  server /registry/minions/159.203.229.250:30579;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name sametree.foo.com;
+  
+
+  location / {
+    proxy_pass http://sametree;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+upstream styleguide {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:31716;
+  
+  server /registry/minions/192.241.194.169:31716;
+  
+  server /registry/minions/159.203.229.250:31716;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name styleguide.foo.com;
+  
+
+  location / {
+    proxy_pass http://styleguide;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+upstream testserver {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:30195;
+  
+  server /registry/minions/192.241.194.169:30195;
+  
+  server /registry/minions/159.203.229.250:30195;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name testserver.foo.com;
+  
+
+  location / {
+    proxy_pass http://testserver;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+upstream accounts-backend {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:32721;
+  
+  server /registry/minions/192.241.194.169:32721;
+  
+  server /registry/minions/159.203.229.250:32721;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name accounts-backend.foo.com;
+  
+
+  location / {
+    proxy_pass http://accounts-backend;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+upstream accounts-frontend {
+  least_conn;
+  
+  server /registry/minions/159.203.237.2:30827;
+  
+  server /registry/minions/192.241.194.169:30827;
+  
+  server /registry/minions/159.203.229.250:30827;
+  
+}
+
+server {
+  listen 80;
+
+  
+  server_name accounts.foo.com;
+  
+
+  location / {
+    proxy_pass http://accounts-frontend;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded_For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+
+
