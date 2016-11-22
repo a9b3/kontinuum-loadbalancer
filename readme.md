@@ -1,6 +1,6 @@
 # Kontinuum Load Balancer
 
-Runs an nginx server that watches etcd for key changes and restarts upon change.
+The purpose of the image is to run an nginx loadbalancer that will automatically detect subdomains via etcd.
 
 Uses [es-etcd-watcher](https://github.com/esayemm/es-etcd-watcher) for watching etcd keys.
 
