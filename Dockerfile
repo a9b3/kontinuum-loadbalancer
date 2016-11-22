@@ -10,12 +10,11 @@ RUN apt-get install -y nodejs-legacy npm
 RUN npm install -g es-etcd-watcher
 
 WORKDIR app
+ADD . .
 
 # Copy over main nginx.conf
 RUN rm /etc/nginx/nginx.conf
 COPY ./templates/nginx.conf /etc/nginx/nginx.conf
-
-COPY ./es-etcd-watcher.config.js .
 
 # Don't run as daemon, keeps docker container alive
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf

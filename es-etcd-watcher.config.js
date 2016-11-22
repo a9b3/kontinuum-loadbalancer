@@ -1,3 +1,9 @@
+const domain = process.env.DOMAIN
+const etcdHost = process.env.ETCD_HOST
+const etcdCa = process.env.ETCD_CA
+const etcdKey = process.env.ETCD_KEY
+const etcdCert = process.env.ETCD_CERT
+
 function turnToKey(root) {
   if (!root.dir) {
     return root
@@ -18,21 +24,30 @@ const commands = [
 
     return api.template({
       src: './templates/app.conf',
-      // dest: '/etc/nginx/sites-enabled/app.conf',
-      dest: './test',
+      dest: '/etc/nginx/sites-enabled/app.conf',
       data: {
         tree,
-        domain: 'foo.com',
+        domain,
       },
     })
   },
   'nginx -s reload'
 ]
 
+const etcd = {
+  host: etcdHost,
+}
+if (etcdCa) {
+  etcd.scheme = 'https'
+  etcd.agentOpts = {
+    ca: etcdCa,
+    key: etcdKey,
+    cert: etcdCert,
+  }
+}
+
 module.exports = {
-  etcd: {
-    host: '159.203.238.31',
-  },
+  etcd,
   keys: [
     {
       key: '/registry/services/',
