@@ -14,5 +14,6 @@ docker run --name kontinuum-lb -d --restart on-failure:5 \
 	-e ETCD_KEY='/etc/etcd/ca.key' \
 	-e ETCD_CERT='/etc/etcd/ca.crt' \
 	-v /etc/etcd:/etc/etcd \
-	kontinuum-lb
+	--net="host" \
+	esayemm/kontinuum-loadbalancer
 ```

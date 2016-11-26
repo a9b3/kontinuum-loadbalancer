@@ -1,5 +1,5 @@
 const domain = process.env.DOMAIN
-const etcdHost = process.env.ETCD_HOST
+const etcdHost = process.env.ETCD_HOST || '0.0.0.0'
 const etcdCa = process.env.ETCD_CA
 const etcdKey = process.env.ETCD_KEY
 const etcdCert = process.env.ETCD_CERT
