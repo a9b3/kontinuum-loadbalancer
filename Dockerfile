@@ -21,8 +21,5 @@ ADD . .
 RUN rm /etc/nginx/nginx.conf
 COPY ./templates/nginx.conf /etc/nginx/nginx.conf
 
-# Don't run as daemon, keeps docker container alive
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-
 EXPOSE 80
 CMD service nginx start && es-etcd-watcher --config ./es-etcd-watcher.config.js
